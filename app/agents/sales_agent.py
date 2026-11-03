@@ -58,7 +58,6 @@ Rule 3: Keep WhatsApp messages short (1 to 2 short sentences, under 50 words).
 Rule 4: Quote prices strictly in Indian format (₹ Lakhs, ₹ Crores).
 Rule 5: Schedule site visits directly in chat using available slots.
 """
-"""
 
 
 class SalesAgent:
