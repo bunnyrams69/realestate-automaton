@@ -44,6 +44,18 @@ htmlcov/
 coverage.xml
 *.cover
 
+# Temporary inspection & build artifacts
+temp.*
+mohan_inspect.pdf
+template_preview.pdf
+orig_template_blocks.txt
+template_analysis.txt
+template_pdf_pages.txt
+pdf_layout_audit.txt
+all_pages_text_utf8.txt
+pdf_pages/
+scratch/
+
 # IDE & OS
 .vscode/
 .idea/

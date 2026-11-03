@@ -26,9 +26,30 @@ class Settings(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     ALLOWED_ORIGINS: str = "http://localhost:3000,http://127.0.0.1:3000"
-    WEBHOOK_BASE_URL: str = ""
+    WEBHOOK_BASE_URL: str = "https://app-dsl-determine-translation.trycloudflare.com"
+    TIMEZONE: str = "Asia/Kolkata"
 
-    # 2. Anthropic / Claude API
+    # Image Library Configuration
+    IMAGE_LIBRARY_PATH: str = "images_lib"
+
+    # Cal.com Booking Configuration
+    CAL_COM_API_KEY: str = ""
+    CAL_COM_EVENT_TYPE_ID: str = ""
+    CAL_COM_BOOKING_URL: str = "https://cal.com/gunda-ganesh-ofduvx/site-visit"
+
+    # Broker & Notification Info
+    BROKER_NAME: str = "Prestige Realty Sales Team"
+    BROKER_PHONE: str = "+91 90000 00000"
+
+    # 2. OpenRouter & AI Model Orchestration (Replaces Direct Claude API)
+    OPENROUTER_API_KEY: str = Field(default="", description="OpenRouter API Key")
+    OPENROUTER_BASE_URL: str = Field(default="https://openrouter.ai/api/v1", description="OpenRouter API Base URL")
+    OPENROUTER_MODEL: str = Field(default="openrouter/auto", description="Primary reasoning & extraction model")
+    OPENROUTER_FAST_MODEL: str = Field(default="openrouter/auto", description="Fast lightweight intent routing model")
+    OPENROUTER_MAX_TOKENS: int = 1024
+    OPENROUTER_TEMPERATURE: float = 0.2
+
+    # Anthropic / Claude API (Fallback compatibility)
     ANTHROPIC_API_KEY: str = "sk-ant-placeholder"
     CLAUDE_MODEL: str = "claude-3-7-sonnet-20250219"
     CLAUDE_FAST_MODEL: str = "claude-3-5-haiku-20241022"

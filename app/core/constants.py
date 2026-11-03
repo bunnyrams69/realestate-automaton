@@ -85,6 +85,7 @@ class SiteVisitStatus(str, Enum):
 class FollowUpStatus(str, Enum):
     """Lifecycle status of scheduled nurturing tasks."""
     PENDING = "PENDING"
+    PROCESSING = "PROCESSING"
     EXECUTED = "EXECUTED"
     CANCELLED = "CANCELLED"
     FAILED = "FAILED"

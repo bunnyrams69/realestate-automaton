@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "locations": {
+    "gachibowli": [
+      {
+        "filename": "gachibowli.webp",
+        "title": "Gachibowli Financial & Tech Corridor",
+        "description": "Premium high-rise residential towers and green open spaces in Gachibowli.",
+        "type": "location"
+      },
+      {
+        "filename": "Golden Urban Towers and Gardens.png",
+        "title": "Golden Urban Towers and Gardens",
+        "description": "Architectural view of luxury high-rise development with landscaped podiums.",
+        "type": "location"
+      }
+    ],
+    "kokapet": [
+      {
+        "filename": "kokapet.webp",
+        "title": "Kokapet Golden-Hour Skyline",
+        "description": "Modern luxury high-rises and tech parks overlooking the Kokapet skyline.",
+        "type": "location"
+      },
+      {
+        "filename": "Golden-Hour Tech District Skyline (1).png",
+        "title": "Kokapet Tech & Residential Hub",
+        "description": "Contemporary high-density premium living in Kokapet SEZ area.",
+        "type": "location"
+      }
+    ],
+    "financial district": [
+      {
+        "filename": "financial_district.webp",
+        "title": "Financial District Skyline",
+        "description": "Iconic glass skyscrapers and elite commercial-residential zone in Financial District.",
+        "type": "location"
+      },
+      {
+        "filename": "Golden-Hour Tech District Skyline.png",
+        "title": "Financial District Corporate & Luxury Living",
+        "description": "Twilight architectural skyline of Financial District.",
+        "type": "location"
+      }
+    ],
+    "kondapur": [
+      {
+        "filename": "kondapur.webp",
+        "title": "Kondapur Green Cityscape",
+        "description": "Lush green urban panorama and residential developments in Kondapur near Botanical Gardens.",
+        "type": "location"
+      },
+      {
+        "filename": "Modern Green Cityscape Panorama.png",
+        "title": "Kondapur Panoramic View",
+        "description": "Expansive view of contemporary residential towers surrounded by greenery in Kondapur.",
+        "type": "location"
+      }
+    ],
+    "nanakramguda": [
+      {
+        "filename": "nanakramguda.webp",
+        "title": "Nanakramguda Highway & Skyline",
+        "description": "Twilight cityscape with curving highway access and ultra-luxury high-rises in Nanakramguda.",
+        "type": "location"
+      },
+      {
+        "filename": "Twilight Cityscape with Curving Highway.png",
+        "title": "Nanakramguda Express Corridor",
+        "description": "Dynamic expressway connectivity and modern skyline in Nanakramguda.",
+        "type": "location"
+      }
+    ],
+    "whitefield": [
+      {
+        "filename": "whitefield.webp",
+        "title": "Whitefield Prime Residential Zone",
+        "description": "Master-planned residential enclave with world-class amenities in Whitefield.",
+        "type": "location"
+      }
+    ]
+  }
+}

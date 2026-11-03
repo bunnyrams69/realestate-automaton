@@ -37,3 +37,11 @@ class ExternalServiceError(AppError):
 class DuplicateEventError(AppError):
     """Raised when an idempotent event has already been processed."""
     pass
+
+
+# Convenience aliases for service layers
+EntityNotFoundException = EntityNotFoundError
+ValidationException = ValidationError
+ExternalServiceException = ExternalServiceError
+AIIntegrationException = ExternalServiceError
+WebhookVerificationException = WebhookVerificationError

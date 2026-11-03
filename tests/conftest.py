@@ -2,10 +2,14 @@
 Global Pytest Configuration and Test Fixtures
 """
 
+import os
+os.environ["APP_ENV"] = "testing"
+
 import pytest
 from httpx import AsyncClient, ASGITransport
+from app.config.settings import settings, Settings
+settings.APP_ENV = "testing"
 from app.main import app
-from app.config.settings import Settings
 
 
 @pytest.fixture
@@ -28,3 +32,12 @@ async def async_client():
     transport = ASGITransport(app=app)
     async with AsyncClient(transport=transport, base_url="http://test") as client:
         yield client
+
+
+@pytest.fixture(autouse=True)
+async def cleanup_database_connections():
+    """Ensure async engine connections are cleanly disposed between test loops on Windows."""
+    yield
+    from app.db.session import async_engine
+    await async_engine.dispose()
+
