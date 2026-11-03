@@ -6,6 +6,7 @@ and retrieves illustrative neighbourhood visuals for WhatsApp sales engagement.
 
 import json
 import os
+import urllib.parse
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 from pydantic import BaseModel, Field
@@ -70,7 +71,8 @@ class ImageLibraryService:
                         fpath = self.base_path / fname
                         if fpath.exists():
                             # Web-accessible URL
-                            url = f"{base_url}/static/images/{fname}" if base_url else f"/static/images/{fname}"
+                            quoted_fname = urllib.parse.quote(fname)
+                            url = f"{base_url}/static/images/{quoted_fname}" if base_url else f"/static/images/{quoted_fname}"
                             self._location_map[norm_loc].append(
                                 ImageMetadata(
                                     location=norm_loc,
@@ -120,7 +122,8 @@ class ImageLibraryService:
                 # Avoid duplicate entries already loaded from manifest
                 existing_files = {m.filename for m in self._location_map[norm_loc]}
                 if file not in existing_files and rel_path not in existing_files:
-                    url = f"{base_url}/static/images/{rel_path}" if base_url else f"/static/images/{rel_path}"
+                    quoted_rel = urllib.parse.quote(rel_path.replace("\\", "/"))
+                    url = f"{base_url}/static/images/{quoted_rel}" if base_url else f"/static/images/{quoted_rel}"
                     self._location_map[norm_loc].append(
                         ImageMetadata(
                             location=norm_loc,

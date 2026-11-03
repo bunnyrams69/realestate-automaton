@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import logging
+import urllib.parse
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
@@ -389,7 +390,9 @@ class AppDeps:
         for u in raw_urls:
             if "/static/images/" in u:
                 fname = u.split("/static/images/")[-1]
-                normalized.append(f"{base}/static/images/{fname}")
+                clean_fname = urllib.parse.unquote(fname)
+                quoted_fname = urllib.parse.quote(clean_fname)
+                normalized.append(f"{base}/static/images/{quoted_fname}")
             else:
                 normalized.append(u)
         return normalized
