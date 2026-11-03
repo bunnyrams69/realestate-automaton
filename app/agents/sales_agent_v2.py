@@ -373,15 +373,26 @@ class AppDeps:
         if not p:
             return []
         
+        base = settings.WEBHOOK_BASE_URL.rstrip("/")
+        raw_urls = []
         # Check if property record has direct images
         prop_entity = await self.property_repo.get_by_id(uuid.UUID(property_id))
         if prop_entity and prop_entity.images:
-            return prop_entity.images[:limit]
+            raw_urls = prop_entity.images[:limit]
+        else:
+            # Otherwise fetch verified neighbourhood images for this location from image_library_service
+            loc = p.get("location", "")
+            imgs = image_library_service.get_images_for_location(loc, limit=limit)
+            raw_urls = [img.url for img in imgs]
 
-        # Otherwise fetch verified neighbourhood images for this location from image_library_service
-        loc = p.get("location", "")
-        imgs = image_library_service.get_images_for_location(loc, limit=limit)
-        return [img.url for img in imgs]
+        normalized = []
+        for u in raw_urls:
+            if "/static/images/" in u:
+                fname = u.split("/static/images/")[-1]
+                normalized.append(f"{base}/static/images/{fname}")
+            else:
+                normalized.append(u)
+        return normalized
 
     async def send_text(self, to: str, text: str) -> None:
         await whatsapp_client.send_text_message(to=to, text=text)
