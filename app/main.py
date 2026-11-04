@@ -57,9 +57,9 @@ def create_application() -> FastAPI:
         title=settings.APP_NAME,
         version=__version__,
         description="Autonomous AI sales & marketing automation engine for real estate.",
-        openapi_url=f"{settings.API_V1_PREFIX}/openapi.json" if not settings.is_production else None,
-        docs_url=f"{settings.API_V1_PREFIX}/docs" if not settings.is_production else None,
-        redoc_url=f"{settings.API_V1_PREFIX}/redoc" if not settings.is_production else None,
+        openapi_url=f"{settings.API_V1_PREFIX}/openapi.json",
+        docs_url="/docs",
+        redoc_url="/redoc",
         lifespan=lifespan,
     )
 
@@ -113,6 +113,12 @@ def create_application() -> FastAPI:
         if os.path.exists(policy_path):
             return FileResponse(policy_path, media_type="text/html")
         return JSONResponse(content={"message": "Privacy policy"}, status_code=200)
+
+    # Root redirect to Interactive Dashboard Docs
+    @app.get("/", include_in_schema=False)
+    async def root_redirect():
+        from fastapi.responses import RedirectResponse
+        return RedirectResponse(url="/docs")
 
     # Root health probe for Render / load balancers
     @app.get("/health", include_in_schema=False)
